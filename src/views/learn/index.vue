@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from "vue";
-import responsive from './components/responsive.vue'
+import responsive from "./components/responsive.vue";
+import watchers from "./components/watchers.vue";
 
 interface Type {
   value: string;
@@ -10,7 +11,7 @@ interface Type {
 const activeName = ref("one");
 const list = reactive<Type[]>([
   { value: "one", label: "响应式" },
-  { value: "two", label: "22" },
+  { value: "two", label: "Watchers" },
 ]);
 </script>
 
@@ -25,4 +26,5 @@ const list = reactive<Type[]>([
   </el-tabs>
 
   <responsive v-if="activeName === 'one'" />
+  <watchers v-if="activeName === 'two'" />
 </template>
