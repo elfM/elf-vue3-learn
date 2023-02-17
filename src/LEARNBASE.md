@@ -14,26 +14,22 @@
 
 1. `v-for` 中可以使用解构
 
-```
-<li v-for="{ message } in items">
-  {{ message }}
-</li>
+```html
+<li v-for="{ message } in items">{{ message }}</li>
 
 <!-- 有 index 索引时 -->
-<li v-for="({ message }, index) in items">
-  {{ message }} {{ index }}
-</li>
+<li v-for="({ message }, index) in items">{{ message }} {{ index }}</li>
 ```
 
 2. 可以使用 `of` 代替 `in`。
 
-```
+```html
 <div v-for="item of items"></div>
 ```
 
 3. 遍历对象时
 
-```
+```html
 <li v-for="(value, key, index) in myObject">
   {{ index }}. {{ key }}: {{ value }}
 </li>
@@ -49,13 +45,8 @@
 
 3. `true-value` 和 `false-value` 是 Vue 特有的 attributes，仅支持和 `v-model` 配套使用。这里 `toggle` 属性的值会在选中时被设为 'yes'，取消选择时设为 'no'。你同样可以通过 `v-bind` 将其绑定为其他动态值。
 
-```
-<input
-  type="checkbox"
-  v-model="toggle"
-  true-value="yes"
-  false-value="no"
-/>
+```html
+<input type="checkbox" v-model="toggle" true-value="yes" false-value="no" />
 ```
 
 ## 监听器
@@ -78,7 +69,7 @@
 
 - 使用了 `<script setup>` 的组件是默认私有的：一个父组件无法访问到一个使用了 `<script setup>` 的子组件中的任何东西，除非子组件在其中通过 `defineExpose` 宏显式暴露。
 
-```
+```javascript
 <script setup>
 import { ref, onMounted } from 'vue'
 import Child from './Child.vue'
@@ -93,7 +84,6 @@ onMounted(() => {
 <template>
   <Child ref="child" />
 </template>
-
 ```
 
 ## 组件基础
@@ -109,9 +99,8 @@ onMounted(() => {
 
 当使用在原生 HTML 元素上时，`is` 的值必须加上前缀 `vue:` 才可以被解析为一个 Vue 组件。这一点是必要的，为了避免和原生的自定义内置元素相混淆。
 
-```
+```html
 <table>
   <tr is="vue:blog-post-row"></tr>
 </table>
-
 ```
