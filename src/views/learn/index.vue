@@ -2,6 +2,7 @@
 import { reactive, ref } from "vue";
 import responsive from "./components/responsive.vue";
 import watchers from "./components/watchers.vue";
+import AsyncComponent from "./components/asyncComponent.vue";
 
 interface Type {
   value: string;
@@ -12,6 +13,7 @@ const activeName = ref("one");
 const list = reactive<Type[]>([
   { value: "one", label: "响应式" },
   { value: "two", label: "Watchers" },
+  { value: "three", label: "异步组件" },
 ]);
 </script>
 
@@ -27,4 +29,5 @@ const list = reactive<Type[]>([
 
   <responsive v-if="activeName === 'one'" />
   <watchers v-if="activeName === 'two'" />
+  <AsyncComponent v-if="activeName === 'three'" />
 </template>
