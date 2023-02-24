@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { reactive, ref } from "vue";
-import responsive from "./components/responsive.vue";
-import watchers from "./components/watchers.vue";
+import Responsive from "./components/responsive.vue";
+import Watchers from "./components/watchers.vue";
 import AsyncComponent from "./components/asyncComponent.vue";
+import Composable from "./components/composable.vue";
 
 interface Type {
   value: string;
@@ -14,6 +15,7 @@ const list = reactive<Type[]>([
   { value: "one", label: "响应式" },
   { value: "two", label: "Watchers" },
   { value: "three", label: "异步组件" },
+  { value: "four", label: "组合式函数" },
 ]);
 </script>
 
@@ -27,7 +29,8 @@ const list = reactive<Type[]>([
     ></el-tab-pane>
   </el-tabs>
 
-  <responsive v-if="activeName === 'one'" />
-  <watchers v-if="activeName === 'two'" />
+  <Responsive v-if="activeName === 'one'" />
+  <Watchers v-if="activeName === 'two'" />
   <AsyncComponent v-if="activeName === 'three'" />
+  <Composable v-if="activeName === 'four'" />
 </template>

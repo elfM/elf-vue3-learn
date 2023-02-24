@@ -12,4 +12,14 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  server: {
+    port: 5173,
+    proxy: {
+      '/v1': {
+        target: `https://www.baidu.com`,
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/v1/, ''),
+      },
+    },
+  },
 });
