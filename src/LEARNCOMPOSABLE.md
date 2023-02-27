@@ -72,3 +72,23 @@ app.directive("color", (el, binding) => {
 6. 初次渲染时过渡，添加 `appear`
 
 7. 想要先执行离开动画，然后在其完成之后再执行元素的进入动画添加 `mode="out-in"`。
+
+## KeepAlive
+
+1. 通过 `include` 和 `exclude` 控制，匹配组件的 `name`。
+
+2. 生命周期钩子函数
+
+```javascript
+import { onActivated, onDeactivated } from "vue";
+
+onActivated(() => {
+  // 调用时机为首次挂载
+  // 以及每次从缓存中被重新插入时
+});
+
+onDeactivated(() => {
+  // 在从 DOM 上移除、进入缓存
+  // 以及组件卸载时调用
+});
+```
