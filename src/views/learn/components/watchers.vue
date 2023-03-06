@@ -34,6 +34,13 @@ watch(
 state.someObject.a = 3;
 </script>
 
+<script lang="ts">
+console.log('我来了1')
+</script>
+<!-- <script lang="ts">
+console.log('我来了')
+</script> -->
+
 <template>
   <div></div>
 </template>
